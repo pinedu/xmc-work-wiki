@@ -1,0 +1,4 @@
+interface:
+  display_name: "建筑工程 Word/PDF 文档"
+  short_description: "生成、排版、校验并回传专业中文建筑工程 Word/PDF 文档"
+  default_prompt: "Use $construction-document-delivery to create a professionally typeset Chinese construction document and reply with the requested Word/PDF files to the current Feishu message."
