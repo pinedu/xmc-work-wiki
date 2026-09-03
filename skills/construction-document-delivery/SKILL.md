@@ -1,5 +1,6 @@
 ---
 name: construction-document-delivery
+version: 1.0.0
 description: Create professionally structured Chinese construction, project-management, business, and legal-support Word/PDF files or Feishu cloud documents, then securely reply with the generated files or verified cloud-document link to the exact Feishu message that requested them. Use when a group member asks 建筑工地助手 to draft,整理,生成,导出,发送, or修改成 a report, notice, plan, minutes, rectification order, contact letter, statement, agreement, Word/.docx, PDF, Word+PDF package, 飞书云文档, 在线文档, or可访问文档链接. Do not use for Excel, PowerPoint, or editing an uploaded source file in place.
 ---
 

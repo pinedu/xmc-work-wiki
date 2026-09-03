@@ -1,5 +1,6 @@
 ---
 name: rhzy-counterclaim-playbook
+version: 1.0.0
 description: "建设单位反索赔剧本库。覆盖 5 类反索赔场景（勘察漏判/总包质量缺陷/总包工期延误/总包工资拖欠/设计错图）— 每类含 4 件套（责任主体 + 法律依据 + 合同依据 + 处置 SOP）。触发场景：总包报送调差索赔、对 111 队发起反索赔、农民工欠薪追偿、监理失职追责、生成《反索赔函》/《索赔意向通知》。联动 skill：rhzy-functional-coverage-audit（事件归属判定）+ rhzy-skill2-legal-counsel（合规应对）+ rhzy-skill4-incident-duty-allocation（事故责任分配）+ rhzy-wage-skill4-subcontractor-wage-recovery（欠薪追偿）+ gz-construction-law-wiki（法规落档）。"
 ---
 

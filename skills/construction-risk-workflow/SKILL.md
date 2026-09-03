@@ -1,5 +1,6 @@
 ---
 name: construction-risk-workflow
+version: 1.0.0
 description: 建筑风险咨询（建设单位/甲方视角）：合同、付款、欠薪、工期、质量、安全、合规等工程风险均触发，按六阶段门控流处置。
 agent_created: true
 ---

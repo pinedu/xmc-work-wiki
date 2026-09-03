@@ -1,5 +1,6 @@
 ---
 name: rhzy-law-citation-strict
+version: 1.0.0
 description: "rhzy 涉法引用强制纪律——任何 rhzy-* skill / 助手在回答里提到法律、法规、法条、条款编号、年限、罚款金额等具体内容时必触发的前置门控。规则：① 条款编号（精确到条/款/项）② 原文（不缩写/不意译/不拼接）③ 文件名（含文号）④ 落档 URL（wiki 本机路径 + OSS HTTPS URL + 锚点）。无落档 = 一律标 WARN 待查证，绝不凭印象补脑。v1.1 增补：国标 vs 省标差异判断铁律。v1.2 增补（2026-07-13 老板纠错）：① Pitfall 6 WARN 与已落档不得共线——写 WARN 前必须先 probe，OK/WARN/UNKNOWN 三元法；② Pitfall 7 重复 docx 落档按 5 步 SOP 跑。v1.3 增补（2026-07-13 第二轮纠错）：Pitfall 8 涉法回答触发 skill 失忆——rhzy-functional-coverage-audit 在引用保修期时凭印象补数字，未加载本 skill 守门。v1.4 增补（2026-07-20 法务训练 R1）：Pitfall 10 题目自带错引法条必须先纠正再作答；Pitfall 11 题目引述不可核验地方文件不得据此填具体比例/期限/数字。详见 gz-construction-law-wiki::references/drop_docx_sop.md + wage-law-supplement-2026-07-13.md。触发场景：用户问法怎么规定 / 老板纠错引法条 / 起草公文引用法条 / docx 法规汇编落档 / 与 rhzy-skill2-legal-counsel/rhzy-skill3/gz-construction-law-wiki/rhzy-functional-coverage-audit 联动。"
 ---
 

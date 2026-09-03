@@ -2,7 +2,7 @@
   "manifestVersion": "1.0.0",
   "schemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "repository": "pinedu/xmc-work-wiki",
-  "generatedAt": "2026-09-03T13:30:19Z",
+  "generatedAt": "2026-09-03T14:27:51Z",
   "skillCount": 22,
   "schemaDefinitions": {
     "defaultInput": {
@@ -112,8 +112,8 @@
   "skills": [
     {
       "name": "construction-document-delivery",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "Create professionally structured Chinese construction, project-management, business, and legal-support Word/PDF files or Feishu cloud documents, then securely reply with the generated files or verified cloud-document link to the exact Feishu message that requested them. Use when a group member asks 建筑工地助手 to draft,整理,生成,导出,发送, or修改成 a report, notice, plan, minutes, rectification order, contact letter, statement, agreement, Word/.docx, PDF, Word+PDF package, 飞书云文档, 在线文档, or可访问文档链接. Do not use for Excel, PowerPoint, or editing an uploaded source file in place.",
       "path": "skills/construction-document-delivery",
       "inputSchema": {
@@ -126,8 +126,8 @@
     },
     {
       "name": "construction-legal-defense-rules-v1",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "建筑工地法务业务 Agent 防御性规则体系 V1.0——整合三轮回合法务训练累积的 50 条核心规则。覆盖农民工工资清偿、实际施工人请求权、借用资质/挂靠、建设工程价款优先受偿权、协议管辖、电子数据证据、设备迟延/赶工因果链、危大工程重大调整与事故责任分配等八大模块。适用于建设单位法务、风险管理、对外法律咨询等场景。",
       "path": "skills/construction-legal-defense-rules-v1",
       "inputSchema": {
@@ -140,8 +140,8 @@
     },
     {
       "name": "construction-risk-workflow",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "建筑风险咨询（建设单位/甲方视角）：合同、付款、欠薪、工期、质量、安全、合规等工程风险均触发，按六阶段门控流处置。",
       "path": "skills/construction-risk-workflow",
       "inputSchema": {
@@ -196,8 +196,8 @@
     },
     {
       "name": "rhzy-contractor-due-diligence",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "施工单位资质尽调数据采集。从 6 个公开政务数据源（国家企业信用信息公示系统 / 中国执行信息公开网 / 中国裁判文书网 / 住建部四库一平台 / 贵州省住建厅 / 国家税务总局重大税收违法失信案件）自动抓取施工单位的资质、诉讼、处罚、失信、关联企业等数据，输出结构化 JSON 给 rhzy-skill1（风险评估分析层）消费。触发场景：谈新总包前资质审查、对合作中的总包做定期复评、政府欠薪投诉后倒查对方资质、做 rhzy-skill1 评估前需要数据。",
       "path": "skills/rhzy-contractor-due-diligence",
       "inputSchema": {
@@ -210,8 +210,8 @@
     },
     {
       "name": "rhzy-counterclaim-playbook",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "建设单位反索赔剧本库。覆盖 5 类反索赔场景（勘察漏判/总包质量缺陷/总包工期延误/总包工资拖欠/设计错图）— 每类含 4 件套（责任主体 + 法律依据 + 合同依据 + 处置 SOP）。触发场景：总包报送调差索赔、对 111 队发起反索赔、农民工欠薪追偿、监理失职追责、生成《反索赔函》/《索赔意向通知》。联动 skill：rhzy-functional-coverage-audit（事件归属判定）+ rhzy-skill2-legal-counsel（合规应对）+ rhzy-skill4-incident-duty-allocation（事故责任分配）+ rhzy-wage-skill4-subcontractor-wage-recovery（欠薪追偿）+ gz-construction-law-wiki（法规落档）。",
       "path": "skills/rhzy-counterclaim-playbook",
       "inputSchema": {
@@ -224,8 +224,8 @@
     },
     {
       "name": "rhzy-functional-coverage-audit",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "建设单位职能覆盖度审计 + 事件四模式判定（事前避坑/事中止损/事后担责/割离自证）。基于 5 部门职能白名单（前期开发/工程管理/成本合约/财务资金/综合行政）做主办/协办判定 + 覆盖结论（✅ 覆盖 / ⚠️ 缺位 / ❓ 需补信息）。严格遵守建设期硬边界（竣工备案移交后 = 移交运营）。v4.4 铁律 11 条 2026-07-24 老板 10 次纠错沉淀 + v2026-07-24 老板锁定 🚨 6 字段警报直出格式（老板没说简化 = 默认走此格式，不输出分析逻辑，不列联动信息）+ **2026-07-24 v5.1 老板指令 4 子条款 + 7 反模式（用户问什么答什么 / 事件连续性 / 群体性事件追问顺序 / 盖章必带前提；反模式 RM-1~7）**——详见 `references/小建铁律库v5.1.md` 与 §十五 v2.0/§十七 四模式判断法 + **§十八 v2026-07-24 本会话 5 次老板口头纠错沉淀（RM-8~13）**——这是本会话最重要沉淀，新会话触发即用。触发场景：老板丢一个事件问这事归谁管/建设单位干不干得了/该不该找谁、生成职能覆盖度审计意见、模拟环境下做职能对位测试、老板未指定格式时按四模式自动判定 + 🚨 警报直出、用户问\"什么时候/能不能/找谁/怎么算/该找谁盖章/风险我来扛\"时强套 v5.1 子条款 4.1-4.4 + §十八 反模式 RM-8~13 兜底。",
       "path": "skills/rhzy-functional-coverage-audit",
       "inputSchema": {
@@ -238,8 +238,8 @@
     },
     {
       "name": "rhzy-fund-skill1-funding-source-risk",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "资金来源风险分析（事前）。四类资金来源（权益类/债务类/政策与财政性/供应链与占用类）利弊 + 特定风险推演（明股实债/期限错配/地方财政恶化/商票逾期等）+ 三种高危结构判定（找死型/等死型/爆雷型）。实现四步：①资金成分识别与结构化 ②单项资金风险穿透 ③结构性风险研判与权重打分 ④输出高管视角职能提示。触发场景：项目可研评审、资金筹措方案审查、明股实债识别、债务期限结构诊断、专项债合规性、F+EPC 模式评估、生成《项目初期资金结构风险体检报告》。",
       "path": "skills/rhzy-fund-skill1-funding-source-risk",
       "inputSchema": {
@@ -252,8 +252,8 @@
     },
     {
       "name": "rhzy-fund-skill2-three-probes",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "动态监控三探针。探针1资金敞口（累计确认产值-累计已支付）/ 探针2资金流出结构（8类支出占比 + 异常流出）/ 探针3未来风险推演（下月刚性支出-预计流入→缺口）。预警口径：拨付率持续下降、敞口>合同20%、连续3月恶化趋势性、短期流动性危机。触发场景：月度资金健康体检、产值确认 vs 拨付率比对、银行转账凭证分类、下月缺口预测、生成《月度资金健康体检报告》。",
       "path": "skills/rhzy-fund-skill2-three-probes",
       "inputSchema": {
@@ -266,8 +266,8 @@
     },
     {
       "name": "rhzy-fund-skill5-compliance-calendar",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "合规日历与自动预警。功能：①根据项目进度自动生成合规事项日历（施工许可证到期/竣工验收备案时限/质量保修期到期/农民工工资保证金退还时限提醒）②法规变动预警（新修订法规施行要点推送）③行政处罚案例推送（本地同类型处罚案例震慑+警示）。触发场景：项目里程碑节点提醒、证照到期预警、法规更新监测、同地区处罚案例监控、月度合规提醒。",
       "path": "skills/rhzy-fund-skill5-compliance-calendar",
       "inputSchema": {
@@ -280,8 +280,8 @@
     },
     {
       "name": "rhzy-invoice-info-verification",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "供应商开票信息标准化核验 SOP。触发场景：老板丢一份开票信息（docx/pdf/图片/文字）→ 要入档/付款前/签合同前核验。标准流程：4 字段提取 → 税号校验 → 经营范围匹配 → 信用核验 → 输出核验报告 + 付款前 checklist。首案沉淀：贵州人和致远数据服务有限责任公司（2026-09-03 老板指令）。",
       "path": "skills/rhzy-invoice-info-verification",
       "inputSchema": {
@@ -294,8 +294,8 @@
     },
     {
       "name": "rhzy-law-citation-strict",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "rhzy 涉法引用强制纪律——任何 rhzy-* skill / 助手在回答里提到法律、法规、法条、条款编号、年限、罚款金额等具体内容时必触发的前置门控。规则：① 条款编号（精确到条/款/项）② 原文（不缩写/不意译/不拼接）③ 文件名（含文号）④ 落档 URL（wiki 本机路径 + OSS HTTPS URL + 锚点）。无落档 = 一律标 WARN 待查证，绝不凭印象补脑。v1.1 增补：国标 vs 省标差异判断铁律。v1.2 增补（2026-07-13 老板纠错）：① Pitfall 6 WARN 与已落档不得共线——写 WARN 前必须先 probe，OK/WARN/UNKNOWN 三元法；② Pitfall 7 重复 docx 落档按 5 步 SOP 跑。v1.3 增补（2026-07-13 第二轮纠错）：Pitfall 8 涉法回答触发 skill 失忆——rhzy-functional-coverage-audit 在引用保修期时凭印象补数字，未加载本 skill 守门。v1.4 增补（2026-07-20 法务训练 R1）：Pitfall 10 题目自带错引法条必须先纠正再作答；Pitfall 11 题目引述不可核验地方文件不得据此填具体比例/期限/数字。详见 gz-construction-law-wiki::references/drop_docx_sop.md + wage-law-supplement-2026-07-13.md。触发场景：用户问法怎么规定 / 老板纠错引法条 / 起草公文引用法条 / docx 法规汇编落档 / 与 rhzy-skill2-legal-counsel/rhzy-skill3/gz-construction-law-wiki/rhzy-functional-coverage-audit 联动。",
       "path": "skills/rhzy-law-citation-strict",
       "inputSchema": {
@@ -322,8 +322,8 @@
     },
     {
       "name": "rhzy-skill1-contractor-risk-assessment",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "施工单位企业风险评估。按七维指标体系（司法风险20% / 行政处罚20% / 主体资质15% / 财务健康15% / 履约能力15% / 关联风险10% / 经营异常5%）对施工单位做红/橙/黄/蓝四级风险评级，流程为采集层→规则引擎（红线直判）→LLM分析层→输出层。触发场景：评估施工单位资质、查询企业司法/处罚/经营异常、对接天眼查企查查四库一平台数据、生成企业风险评级报告。",
       "path": "skills/rhzy-skill1-contractor-risk-assessment",
       "inputSchema": {
@@ -336,8 +336,8 @@
     },
     {
       "name": "rhzy-skill2-legal-counsel",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "建设单位法律顾问。三类 Agent 应对范式：事前预判（能做/不能做/有条件能做 + 法律依据 + 合规替代）/ 事中应对（动作清单 + 时限 + 不做的后果）/ 事后处置（危机策略 + 最坏预判 + 减轻手段）。法规知识图谱结构：条文 / 解读 / 关联关系（上下位法、一般-特别法、法条-司法解释、法条-强制性标准）/ 处罚案例 / 司法判例 / 时效性标签。触发场景：合规预判、突发事件应对、招标发包方式合法性、施工许可手续、特种作业人员资质、文物/检查等应急场景。",
       "path": "skills/rhzy-skill2-legal-counsel",
       "inputSchema": {
@@ -350,8 +350,8 @@
     },
     {
       "name": "rhzy-skill3-duty-performance-analysis",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "建设单位履职情况分析。三层架构：数据感知层（节点状态 + 时间数据）→ 漏洞判定层（4 类触发 → 4 类定性 + 责任方）→ 职能提示层（标准预警文案）。触发场景：发改委流程图节点卡点、报建统筹、外部审图机构管控、未批先建、应招未招、生成《核查督办单》、前期报建失位预警、节点超期判定。",
       "path": "skills/rhzy-skill3-duty-performance-analysis",
       "inputSchema": {
@@ -364,8 +364,8 @@
     },
     {
       "name": "rhzy-skill4-incident-duty-allocation",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "建设工程事故后建设单位（甲方）责任分配评估。三问评估法（①资质审核底档 / ②事发前整改通知书 / ③工程款拖欠）+ 主体责任/督促责任二分逻辑 + 公文风输出风格（\"建议核查\"非\"我觉得\"）+ 分割线 + \"风控顾问\"署名。触发关键词：发生安全事故、工人投诉、欠薪事件后、追责划分、责任认定、甲方有没有责任、建设单位责任、出事后怎么分锅、整改通知书留底、工程款拖欠、谁该担主责。",
       "path": "skills/rhzy-skill4-incident-duty-allocation",
       "inputSchema": {
@@ -392,8 +392,8 @@
     },
     {
       "name": "rhzy-wage-skill2-temporary-worker-rush-management",
-      "version": null,
-      "versionSource": "not-declared",
+      "version": "1.0.0",
+      "versionSource": "frontmatter",
       "description": "抢工阶段临时工工资支付管理。覆盖：①临时工实名制快速录入（3 日内完成 + 现场设点批量办理）②\"日清月结 / 周结\"支付节奏设计 ③班组长《承诺书》+总包《执行细则》配套 ④20% 随机电话回访机制 ⑤抢工前/中/后三阶段标准动作。核心原则：临时工再多再急，**严禁班组长代发、严禁专户挪作他用、严禁绕过实名制**。触发场景：项目抢工、大量临时工进场、按天结算工资、班组长要求代发、生成《临时工实名制管理补充协议》《班组长承诺书》《抢工阶段临时工管理执行细则》。",
       "path": "skills/rhzy-wage-skill2-temporary-worker-rush-management",
       "inputSchema": {
