@@ -2,8 +2,8 @@
   "manifestVersion": "1.0.0",
   "schemaDialect": "https://json-schema.org/draft/2020-12/schema",
   "repository": "pinedu/xmc-work-wiki",
-  "generatedAt": "2026-09-03T14:27:51Z",
-  "skillCount": 22,
+  "generatedAt": "2026-09-07T08:57:42Z",
+  "skillCount": 23,
   "schemaDefinitions": {
     "defaultInput": {
       "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -142,8 +142,22 @@
       "name": "construction-risk-workflow",
       "version": "1.0.0",
       "versionSource": "frontmatter",
-      "description": "建筑风险咨询（建设单位/甲方视角）：合同、付款、欠薪、工期、质量、安全、合规等工程风险均触发，按六阶段门控流处置。",
+      "description": "建筑风险咨询强制入口（建设单位/甲方视角）。\n\n⚠️ 本 skill 包含强制执行步骤（Phase 0~Phase 6），Agent 加载本 skill 后必须严格按顺序执行，**不得跳过任何 Phase，不得在用户未回答节点问题/未上传凭证的情况下推进决策树**。违反此约束视为执行事故。\n\n所有建筑领域风险咨询（欠薪/安全/质量/合规/资金/法务等工程风险）必须先经过本 skill 进行六阶段门控流分流判别，不得直接触发下游专项 skill。\n直接触发下游专项 skill（rhzy-counterclaim-playbook / rhzy-skill4-incident-duty-allocation / rhzy-wage-skill3 等）的行为视为错误路由。\n\n六阶段门控流职责：Phase 1 三问链（判断建设单位有没有做/麻烦有没有产生/建设单位有没有过错）→ L3规则引擎扫描（命中A/B/C/D/E规则簇）→ 分流至对应专项处置 + 联动下游 skill。\n\n下游专项 skill 分流路由：\n- 规则簇1（欠薪风险）→ 进入 Phase 1.5 欠薪决策树，末端情形联动 rhzy-counterclaim-playbook（D类总包工资拖欠）或 rhzy-wage-skill3（班组质量+工资红线）\n- 规则簇2（安全风险）→ 联动 rhzy-skill4-incident-duty-allocation（三问评估法·安全场景）\n- 规则簇3（质量风险）→ 联动 rhzy-wage-skill3（班组质量+工资红线）\n- 规则簇4/5（进度/合规风险）→ 联动 rhzy-skill2-legal-counsel（合规预判）\n- 资金专项（专户/分账/拨付率）→ 联动 rhzy-fund-skill2-three-probes（动态监控三探针）\n\n唯一例外：用户明确说\"不用走 construction-risk-workflow，直接查某专项\"时，可跳过本 skill 直接调用专项。",
       "path": "skills/construction-risk-workflow",
+      "inputSchema": {
+        "$ref": "#/schemaDefinitions/defaultInput"
+      },
+      "outputSchema": {
+        "$ref": "#/schemaDefinitions/defaultOutput"
+      },
+      "schemaSource": "repository-default"
+    },
+    {
+      "name": "rhzy-output-format",
+      "version": "1.0.1",
+      "versionSource": "frontmatter",
+      "description": "建筑风险咨询输出格式标准化，触发：construction-risk-workflow 输出方案时。",
+      "path": "skills/rhzy-output-format",
       "inputSchema": {
         "$ref": "#/schemaDefinitions/defaultInput"
       },
