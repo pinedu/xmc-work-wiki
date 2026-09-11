@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Stage 2 LLM 复核 verdicts 契约（construction-contract-review v1.3.0）",
+  "description": "平台 agent 读完 Stage 1 JSON + 合同原文，调 LLM 后产出的 verdicts 文件格式契约。由 review_engine.py --stage2-input 读入并强制校验：verdict 值非法、必填字段缺失、rule_id 不在 27 条规则内、Stage 1 findings 未全覆盖等情形一律 exit 2。",
+  "type": "object",
+  "required": ["engine_version", "input_path", "stage1_finding_count", "verdicts"],
+  "additionalProperties": false,
+  "properties": {
+    "engine_version": {
+      "type": "string",
+      "description": "引擎版本号，必须与 Stage 1 输出 engine_version 一致（v1.3.0 起）。",
+      "enum": ["1.3.0"]
+    },
+    "input_path": {
+      "type": "string",
+      "description": "原合同文件路径（与 Stage 1 输出 input_path 一致，便于审计追溯）。"
+    },
+    "stage1_finding_count": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Stage 1 findings_raw 数组长度；提交 Stage 2 合并前必须与 findings_raw 长度一致。"
+    },
+    "verdicts": {
+      "type": "array",
+      "description": "LLM 复核 verdict 列表。必须覆盖 Stage 1 全部 findings（confirmed/false_positive/uncertain 三选一），其余 27 条规则可以补 missed 或落 correctly_absent。",
+      "items": {
+        "type": "object",
+        "required": ["verdict"],
+        "additionalProperties": false,
+        "properties": {
+          "verdict": {
+            "type": "string",
+            "enum": ["confirmed", "false_positive", "uncertain", "missed", "correctly_absent"],
+            "description": "复核结论：confirmed=确认是真问题（保留）；false_positive=误报（移除）；uncertain=存疑（保留+标签）；missed=规则引擎漏报（补报到 findings）；correctly_absent=确认无问题（仅审计日志）。"
+          },
+          "rule_id": {
+            "type": "string",
+            "enum": [
+              "C01", "C02", "C03", "C04", "C05", "C06", "C07", "C08", "C09",
+              "C10", "C11", "C12", "C13", "C14", "C15", "C16", "C17", "C18",
+              "C19", "C20", "C21", "C22", "C23", "C24", "C25", "C26", "C27"
+            ],
+            "description": "27 条规则之一。LLM 不得发明新规则；非此枚举的 rule_id 触发 exit 2。confirmed/false_positive/uncertain 必须对应 Stage 1 真实 (rule_id, clause_id)，否则 exit 2。"
+          },
+          "clause_id": {
+            "type": "string",
+            "description": "missed 必填；其他 verdict 可选（便于审计）。"
+          },
+          "clause_title": {
+            "type": "string",
+            "description": "missed 必填。"
+          },
+          "clause_text": {
+            "type": "string",
+            "description": "missed 必填，用于复审。"
+          },
+          "reason": {
+            "type": "string",
+            "description": "复核理由。false_positive / uncertain / missed 必填；correctly_absent 也必须写理由（说明该规则为何不适用或被何种合规表述排除），全部 27 条核对理由都要留痕。"
+          }
+        },
+        "allOf": [
+          {
+            "description": "missed 必须携带 clause_id/title/text/reason + rule_id",
+            "if": {"properties": {"verdict": {"const": "missed"}}},
+            "then": {
+              "required": ["rule_id", "clause_id", "clause_title", "clause_text", "reason"]
+            }
+          },
+          {
+            "description": "false_positive / uncertain 必填 reason",
+            "if": {"properties": {"verdict": {"enum": ["false_positive", "uncertain"]}}},
+            "then": {"required": ["rule_id", "reason"]}
+          },
+          {
+            "description": "correctly_absent 必填 rule_id + reason（留痕要求）",
+            "if": {"properties": {"verdict": {"const": "correctly_absent"}}},
+            "then": {"required": ["rule_id", "reason"]}
+          }
+        ]
+      }
+    }
+  }
+}
