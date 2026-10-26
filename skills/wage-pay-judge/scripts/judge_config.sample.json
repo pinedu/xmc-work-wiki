@@ -1,0 +1,20 @@
+{
+  "_说明": "判定口径模板（非项目数据，可随 skill 分发）。请勿在此填入 project_id / project_code / 具体项目路径——这些一律在运行时由 qxb MCP 会话解析（--project-name）或显式 --project-id。本模板为中医药 v4 口径：预警值（warn）×1.30/×0.85；第二轮 hold（可能欠付一律待复核、不坐实）；工种冲突/空按班组名反推。",
+  "threshold_mode": "warn",
+  "second_round": "hold",
+  "gongzhong_resolve": "team_fallback",
+  "attendance_source": "kaoqin",
+  "team_gong_map": [
+    ["砌筑", "砌筑工"],
+    ["模板", "模板工"],
+    ["混凝土", "混凝土工"],
+    ["水电", "水电工"],
+    ["钢筋", "钢筋工"],
+    ["机械", "工程机械司机"],
+    ["涂料", "涂料工"],
+    ["外架", "架子工"],
+    ["防水", "防水工"],
+    ["杂工", "杂工"],
+    ["监理", "管理人员"]
+  ]
+}
